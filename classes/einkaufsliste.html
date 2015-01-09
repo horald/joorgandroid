@@ -1,0 +1,88 @@
+<html>
+  <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Joorgportal</title>
+        <!-- Bootstrap -->
+        <link href="../includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="../data/kaufort.json"></script>
+        <script type="text/javascript" src="get.js"></script>
+  </head>
+  <body>
+  <h3>Einkaufsliste</h3>
+
+
+<form name="auswahl" method="GET" action="einkaufsliste.html">
+  <a href="../index.html" class="btn btn-primary btn-sm active" role="button">Menü</a> 
+  <a href="import.html" class="btn btn-primary btn-sm active" role="button">Import</a> 
+  <a href="showjson.html" class="btn btn-primary btn-sm active" role="button">showjson</a> 
+<script type="text/javascript">
+  var einkaufsliste = JSON.parse(localStorage.getItem("einkaufsliste"));
+  var AnzDaten = einkaufsliste.daten.length + 1;
+  document.write('<a href="update.html?id='+AnzDaten+'" class="btn btn-primary btn-sm active" role="button">Einfügen</a> ');
+  document.write('<label>Kaufort: </label>');
+  document.write('<select name="kaufort">');
+
+  kaufort.daten.forEach(function(entry) {
+    sfldbez=entry.fldbez;
+    lfldbez=liste['kaufort'];
+    if (sfldbez==lfldbez) {
+        document.write('  <option selected>'+sfldbez+'</option>');
+     } else {
+        document.write('  <option>'+sfldbez+'</option>');
+
+     }   
+  });
+
+  document.write('</select>');
+
+</script>
+  <input type="submit" value="Go!"> 
+</form>
+
+
+  <table class="table">
+  <th>Bezeichnung</th>
+  <th>Kaufort</th>
+  <th>Anz</th>
+  <th>E-Preis</th>
+  <th>G-Preis</th>
+  <script type="text/javascript">
+  //var mydata = JSON.parse(stadtbezirk);
+  var sumpreis=0;
+  var id=0;
+  einkaufsliste.daten.forEach(function(entry) {
+    id=id+1; 
+    sfldbez=entry.fldBez;
+    sfldkaufort=entry.fldOrt;
+    lfldbez=liste['kaufort'];
+    lweiter=false;
+    if (sfldkaufort==lfldbez) {
+      lweiter=true;
+    }
+    if (lfldbez=="(ohne)") {
+      lweiter=true;
+    }
+    if (!lfldbez) {
+      lweiter=true;
+    }
+    if (lweiter) {
+
+      sAnz=Number(entry.fldAnz);
+      //sfldpreis=entry.fldPreis;
+      sfldpreis=Number(entry.fldPreis);
+      gespreis=sfldpreis * sAnz;
+      sumpreis=sumpreis + gespreis;
+      document.write("<tr><td>"+sfldbez+"</td><td>"+sfldkaufort+"</td><td>"+sAnz+"</td><td>"+sfldpreis.toFixed(2)+"</td><td align='right'>"+gespreis.toFixed(2)+"</td>");
+      document.write("<td><a href='update.html?id="+id+"' class='btn btn-primary btn-sm active' role='button'>U</a></td>");
+      document.write("<td><a href='delete.html?id="+id+"' class='btn btn-primary btn-sm active' role='button'>D</a></td></tr>");
+    }
+  });
+  document.write("<tr><td></td><td></td><td></td><td></td><td align='right'>"+sumpreis.toFixed(2)+"</td></tr>");
+//  document.write("len="+einkaufsliste.daten.length); 
+  </script>
+  </table>
+
+
+  </body>
+</html>

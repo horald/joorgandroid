@@ -1,0 +1,41 @@
+<html>
+  <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Joorgportal</title>
+        <!-- Bootstrap -->
+        <link href="../includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="get.js"></script>
+  </head>
+  <body>
+  <a href="einkaufsliste.html" class="btn btn-primary btn-sm active" role="button">Zurück</a> 
+
+<script type="text/javascript">
+  if (liste['insert']) {
+    document.write('insert...'+liste['insert']+"<br>");
+    document.write('insert...'+document.getElementById('fldbez'));
+  } else {
+    document.write('no insert');
+  }
+</script>
+
+<form class="form-horizontal" role="form" method="GET">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Bezeichnung</label>
+    <div class="col-sm-10">
+      <input class="form-control" name="fldbez">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Kaufort</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="fldort" placeholder="Aldi">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <a type="submit" href="insert.html?insert=1" class="btn btn-primary btn-sm active" role="button">Einfügen</a> 
+    </div>
+  </div>
+</form>
+  </body>
+</html>

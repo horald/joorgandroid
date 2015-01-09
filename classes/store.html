@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function speichern() {
+ var key = document.getElementById('key').value;
+ var data = document.getElementById('data').value;
+ window.localStorage.setItem(key, data);
+}
+
+function lesen() {
+ var key = document.getElementById('key').value;
+ document.getElementById('data').value = window.localStorage.getItem(key);
+}
+</script>
+
+</head>
+<body>
+
+Text: <br>
+<textarea id="data"></textarea> <br>
+Schlüssel: <input type="text" id="key">
+<input type="button" value="Speichern" onclick="speichern()">
+<input type="button" value="Lesen" onclick="lesen()">
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+var kaufort = {"daten": [
+        {"fldbez": "(ohne)"},
+        {"fldbez": "Aldi"},
+        {"fldbez": "Alnatura"},
+        {"fldbez": "Kaufland"}
+    ]
+};

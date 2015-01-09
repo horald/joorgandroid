@@ -1,0 +1,4 @@
+var einkaufsliste = {"daten": [
+ {"fldReihenfolge":"0","fldBez":"Agavendicksaft","fldArtikelnr":"","fldTyp":"","fldSort":"","fldAbteilung":"(ohne)","fldOrt":"Aldi","fldPreis":"0.00","fldAnz":"1.000","fldArchivDat":"","fldKonto":"LEBEN","fldBarcode":"","flde01vorrat":"0","fldStatus":"offen","fldEinkaufDat":"2014-12-06"},
+ {"fldReihenfolge":"0","fldBez":"Apfelmus im Glas","fldArtikelnr":"","fldTyp":"","fldSort":"","fldAbteilung":"(ohne)","fldOrt":"Aldi","fldPreis":"0.00","fldAnz":"1.000","fldArchivDat":"","fldKonto":"LEBEN","fldBarcode":"","flde01vorrat":"0","fldStatus":"offen","fldEinkaufDat":"2014-12-06"},
+]};

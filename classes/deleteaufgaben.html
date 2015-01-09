@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Form Test</title>
+        <!-- Bootstrap -->
+        <link href="../includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="get.js"></script>
+</head>
+
+<body>
+<a href="aufgaben.html" class="btn btn-primary btn-sm active" role="button">Zurück</a> 
+<form id="updateForm" class="form-horizontal" action="javascript:updatefunc()">
+        <script type="text/javascript">
+          var storeliste = JSON.parse(localStorage.getItem("aufgaben"));
+          var AnzDaten = storeliste.daten.length;
+          var id=liste['id']-1;
+          var strVal=storeliste.daten[id].fldBez;
+          document.write('"'+strVal+'" wirklich löschen?');
+          var zaehl=0;
+          storeliste.daten.forEach(function(entry) {
+            var strVar="daten["+zaehl.toString()+"].fldBez"; 
+            document.write('<input type="hidden" name="'+strVar+'"   value="'+entry.fldBez+'"/>');
+            zaehl=zaehl+1;
+          });
+
+
+        </script>
+
+	<dl>
+		<dt></dt>
+		<dd><input type="submit" value="Löschen" /></dd>
+	</dl>
+</form>
+
+<pre><code id="showdata">
+</code></pre>
+
+<script type="text/javascript" src="form2object.js"></script>
+<script type="text/javascript" src="json2.js"></script>
+<script type="text/javascript">
+	function updatefunc()
+	{
+		var storeliste = form2object('updateForm', '.', true,
+				function(node)
+				{
+					if (node.id && node.id.match(/callbackTest/))
+					{
+						return { name: node.id, value: node.innerHTML };
+					}
+				});
+
+                storeliste.daten.splice(id,1);
+                localStorage.setItem('aufgaben', JSON.stringify(storeliste));
+                var zaehl = id + 1; 
+                document.getElementById('showdata').innerHTML = zaehl + ". Datensatz gelöscht.";
+                window.location = "aufgaben.html";
+	}
+</script>
+</body>
+</html>
